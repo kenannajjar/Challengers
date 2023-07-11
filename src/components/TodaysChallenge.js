@@ -3,31 +3,24 @@ import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native'
 
 export default function TodaysChallenge() {
     return (
-      <TouchableOpacity style = {styles.container}>
-        <View style = {styles.details} >
-            <View>
-                <Text style = {styles.time} >{challengeInfo.time}</Text>
-            </View>
-            <View style = {{flexDirection: "row", alignItems: "center"}}>
-                <Image source={require("../../assets/rec.png")} style={{
-                    width: 10,
-                    height: 10,
-                    resizeMode: "contain",
-                }} />
-                <Text style = {styles.text}>Live</Text>
-            </View>
+        <View>
+            <Text style={styles.labelText}>Today's Challenge</Text>
+            <TouchableOpacity style={styles.container}>
+                <View style={styles.details}>
+                    <View>
+                        <Text style={styles.time}>{challengeInfo.time}</Text>
+                    </View>
+                    <View style={styles.liveIndic}>
+                        <Image source={require("../../assets/rec.png")} style = {styles.circle} />
+                        <Text style={styles.text}>Live</Text>
+                    </View>
+                </View>
+                <View style={styles.infoContainer}>
+                    <Text style={styles.title}>{challengeInfo.title}</Text>
+                    <Image source={require("../../assets/focus.png")} style={styles.buttonGraphic} />
+                </View>
+            </TouchableOpacity>
         </View>
-        <View style = {{ alignItems: "center", padding: 10}}>
-            <Text style = {{color: "rgb(240, 232, 252)", fontSize: 40, fontWeight: "bold"}}>{challengeInfo.title}</Text>
-            <Image source={require("../../assets/focus.png")} style={{
-                width: 100,
-                height: 100,
-                marginTop: 10,
-                marginBottom: 10,
-                resizeMode: "contain",
-            }} />
-        </View>
-      </TouchableOpacity>
     )
 }
 
@@ -41,7 +34,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
     },
-    text: { 
+    text: {
         color: "rgb(179, 138, 245)",
         fontSize: 20,
         fontWeight: "bold",
@@ -50,10 +43,46 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginTop: 10
     },
-    time: { 
+    time: {
         color: "rgb(179, 138, 245)",
         fontSize: 20,
         fontWeight: "bold",
+        padding: 10
+    },
+    labelText: {
+        color: 'white',
+        fontSize: 27,
+        fontWeight: "bold",
+        marginBottom: 10
+    },
+    live: {
+        width: 10,
+        height: 10,
+        resizeMode: "contain",
+    },
+    buttonGraphic:
+    {
+        width: 100,
+        height: 100,
+        marginTop: 10,
+        marginBottom: 10,
+        resizeMode: "contain",
+    },
+    liveIndic: {
+        flexDirection: "row", 
+        alignItems: "center" 
+    },
+    title: { 
+        color: "rgb(240, 232, 252)", 
+        fontSize: 40, 
+        fontWeight: "bold" 
+    },
+    circle: {
+        width: 10,
+        height: 10
+    },
+    infoContainer: {
+        alignItems: "center", 
         padding: 10
     }
 })

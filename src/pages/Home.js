@@ -10,13 +10,10 @@ export default function Home() {
                 <UserSummary />
             </View>
             <ScrollView>
-
-                <View style={{ padding: 20 }}>
-                    <Text style={styles.text}>Today's Challenge</Text>
+                <View style={styles.todaysChallenge}>
                     <TodaysChallenge />
                 </View>
             </ScrollView>
-
         </SafeAreaView>
     );
 }
@@ -34,8 +31,14 @@ const styles = StyleSheet.create({
     },
     topBar: {
         flexDirection: "row",
+        justifyContent: "space-between",
         marginLeft: 10,
         marginRight: 10, 
         marginBottom: 10
+    },
+    todaysChallenge: {
+        marginTop: 10,
+        marginLeft: 20,
+        marginRight: 20
     }
 });
