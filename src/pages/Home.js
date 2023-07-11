@@ -9,9 +9,12 @@ export default function Home() {
             <View style={styles.topBar}>
                 <UserSummary />
             </View>
-            <ScrollView>
+            <ScrollView stickyHeaderIndices={[1]}> 
                 <View style={styles.todaysChallenge}>
                     <TodaysChallenge />
+                </View>
+                <View style = {styles.categoriesText}>
+                    <Text style = {styles.text}>Categories</Text>
                 </View>
             </ScrollView>
         </SafeAreaView>
@@ -22,6 +25,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#121212',
+        width: "100%"
     },
     text: {
         color: 'white',
@@ -37,8 +41,13 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     todaysChallenge: {
-        marginTop: 10,
+        marginTop: 20,
         marginLeft: 20,
         marginRight: 20
+    },
+    categoriesText: {
+        width: "100%",
+        paddingLeft: 20,
+        marginTop: 20
     }
 });
