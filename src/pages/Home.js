@@ -2,12 +2,14 @@ import React from 'react';
 import { SafeAreaView, View, StyleSheet, Text, ScrollView } from 'react-native';
 import TodaysChallenge from '../components/TodaysChallenge';
 import UserSummary from '../components/UserSummary';
+import LogoutButton from '../components/LogoutButton';
 
 export default function Home() {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.topBar}>
                 <UserSummary />
+                <LogoutButton />
             </View>
             <ScrollView>
                 <View style={styles.todaysChallenge}>

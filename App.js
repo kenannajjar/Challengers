@@ -13,13 +13,13 @@ const App = () => {
   const { user, setUser } = useUserContext(); // Access user state from the context
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    const unsubscribe = auth.onAuthStateChanged((u) => {
       console.log("user changed");
-      setUser(user); // Update the state with the authenticated user (or null if not logged in)
+      setUser(u); // Update the state with the authenticated user (or null if not logged in)
     });
 
     return () => unsubscribe();
-  }, [setUser]);
+  }, []);
 
   if (user) {
     return (

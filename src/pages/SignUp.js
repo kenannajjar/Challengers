@@ -4,7 +4,6 @@ import auth from '../firebase/auth';
 import db from '../firebase/database';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
-import { useUserContext } from '../context/UserContext';
 
 const SignUpPage = () => {
     const [email, setEmail] = useState('');
