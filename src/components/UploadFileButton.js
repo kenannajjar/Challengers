@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, Image, View } from 'react-native';
+import { Button, View, StyleSheet } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import storage from '../../firebase/storage';
+import storage from '../firebase/storage';
 import { ref, uploadBytesResumable, getDownloadURL, uploadString } from "firebase/storage";
 
 const UploadFileButton = () => {
@@ -51,10 +51,18 @@ const UploadFileButton = () => {
     };
 
     return (
-        <View>
-            <Button title="Upload Photo" onPress={handleUpload} />
+        <View style={styles.container}>
+            <Button title="Upload Photo" onPress={handleUpload} color="#007AFF" />
         </View>
     );
+
 };
+
+const styles = StyleSheet.create({
+    container: {
+        marginVertical: 10,
+        paddingHorizontal: 20,
+    },
+});
 
 export default UploadFileButton;

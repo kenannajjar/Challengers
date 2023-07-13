@@ -4,6 +4,7 @@ import auth from '../firebase/auth';
 import db from '../firebase/database';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
+import UploadFileButton from '../components/UploadFileButton';
 
 
 const SignUpPage = () => {
@@ -81,6 +82,8 @@ const SignUpPage = () => {
                 value={confirmPassword}
                 onChangeText={setConfirmPassword}
             />
+
+            {/* <UploadFileButton /> */}
 
             {error ? <Text style={styles.error}>{error}</Text> : null}
 
