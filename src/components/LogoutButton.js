@@ -2,12 +2,17 @@ import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { signOut } from 'firebase/auth';
 import auth from '../firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LogoutButton = () => {
     const handleLogout = async () => {
         try {
             await signOut(auth);
             // Additional logic after successful logout
+
+            // delete all data from async storage
+            AsyncStorage.clear();
+
         } catch (error) {
             console.log(error);
         }

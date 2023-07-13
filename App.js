@@ -6,6 +6,7 @@ import SignUpSignInNavigator from './src/navigation/SignUpSignInNavigator';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import auth from './src/firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createStackNavigator();
 

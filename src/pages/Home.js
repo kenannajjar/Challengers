@@ -5,6 +5,7 @@ import UserSummary from '../components/UserSummary';
 import LogoutButton from '../components/LogoutButton';
 
 export default function Home() {
+
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.topBar}>
