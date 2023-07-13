@@ -1,14 +1,23 @@
 import React from 'react';
 import { Text, TouchableOpacity, Image, View, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-export default function CategoryButton(props) {
+const CategoryButton = (props) => {
+    const navigation = useNavigation();
+
+    const goToCategory = function() {
+        navigation.navigate('CategoryPage'); // Navigate to the 'CategoryPage' screen
+      };
+
     return (
-        <TouchableOpacity style={[styles.button, {backgroundColor: props.cat.color}]}>
+        <TouchableOpacity style={[styles.button, {backgroundColor: props.cat.color}]} onPress={goToCategory}>
             <Image source={props.cat.image} style={styles.image} />
             <Text style={styles.text}>{props.cat.title}</Text>
         </TouchableOpacity>
     )
 }
+
+export default CategoryButton;
 
 const styles = StyleSheet.create({
     button: {
