@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Text, View, Image, StyleSheet } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
@@ -6,12 +6,23 @@ export default function UserSummary() {
 
     // get username from async storage
     const [username, setUsername] = useState('');
-    const key = 'username';
-    AsyncStorage.getItem(key).then((value) => {
-        setUsername(value);
-    }).catch((error) => {
-        console.log(error);
-    });
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const storedUsername = await AsyncStorage.getItem('username');
+                console.log(storedUsername);
+                if (storedUsername) {
+                    setUsername(storedUsername);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
 
     return (
