@@ -2,6 +2,8 @@ import React from 'react';
 import { SafeAreaView, View, StyleSheet, Text, ScrollView } from 'react-native';
 import TodaysChallenge from '../components/TodaysChallenge';
 import UserSummary from '../components/UserSummary';
+import Categories from '../components/Categories';
+
 
 export default function Home() {
     return (
@@ -16,6 +18,7 @@ export default function Home() {
                 <View style = {styles.categoriesText}>
                     <Text style = {styles.text}>Categories</Text>
                 </View>
+                <Categories />
             </ScrollView>
         </SafeAreaView>
     );
@@ -24,7 +27,7 @@ export default function Home() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#121212',
+        backgroundColor: "#1e1e1e",
         width: "100%"
     },
     text: {
@@ -41,13 +44,15 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     todaysChallenge: {
-        marginTop: 20,
-        marginLeft: 20,
-        marginRight: 20
+        paddingTop: 20,
+        paddingLeft: 20,
+        paddingRight: 20,
+        backgroundColor: "#121212"
     },
     categoriesText: {
         width: "100%",
         paddingLeft: 20,
-        marginTop: 20
+        paddingTop: 20,
+        backgroundColor: "#121212"
     }
 });
