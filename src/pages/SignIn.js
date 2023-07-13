@@ -3,8 +3,6 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-nativ
 import { useNavigation } from '@react-navigation/native';
 import auth from '../firebase/auth';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getUserData } from '../firebase/api';
 
 
 const SignInPage = () => {
@@ -21,16 +19,6 @@ const SignInPage = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed in
-                // Fetch the user data from the database and store it in async storage
-
-                const key = 'username';
-                getUserData(userCredential.user.uid).then((userdata) => {
-                    AsyncStorage.setItem(key, userdata.username);
-                    console.log("user added to async storage");
-                }).catch((error) => {
-                    console.log(error);
-                });
-
             }
             )
             .catch((error) => {

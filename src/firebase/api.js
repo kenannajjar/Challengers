@@ -8,9 +8,7 @@ export const getUserData = async (userID) => {
     const userDocSnapshot = await getDoc(userDocRef); // Retrieve the document snapshot
 
     if (userDocSnapshot.exists()) {
-        console.log("User document exists");
         const userData = userDocSnapshot.data(); // Access the data of the document
-        // Do something with the user data
         return userData;
     } else {
         return null;

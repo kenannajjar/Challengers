@@ -4,7 +4,7 @@ import auth from '../firebase/auth';
 import db from '../firebase/database';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const SignUpPage = () => {
     const [email, setEmail] = useState('');
@@ -37,11 +37,6 @@ const SignUpPage = () => {
                     dateCreated: serverTimestamp()
                 });
                 console.log("user added to database");
-
-                const key = 'username';
-                const value = username;
-                await AsyncStorage.setItem(key, value);
-                console.log("user added to async storage");
             }
             catch (error) {
                 console.log('Error adding user to database:', error.message);

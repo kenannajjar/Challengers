@@ -1,24 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { Text, View, Image, StyleSheet } from 'react-native'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import { getUserData } from '../firebase/api';
+import { useUserContext } from '../context/UserContext';
 
 export default function UserSummary() {
 
-    // get username from async storage
     const [username, setUsername] = useState('');
 
+    // user context
+    const { user } = useUserContext();
 
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const storedUsername = await AsyncStorage.getItem('username');
-                console.log(storedUsername);
-                if (storedUsername) {
-                    setUsername(storedUsername);
-                }
-            } catch (error) {
-                console.log(error);
-            }
+            const userData = await getUserData(user.uid);
+            setUsername(userData.username);
         };
 
         fetchData();
