@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, View, StyleSheet } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import storage from '../firebase/storage';
+import storage from '../../firebase/storage';
 import { ref, uploadBytesResumable, getDownloadURL, uploadString } from "firebase/storage";
 
 const UploadFileButton = () => {

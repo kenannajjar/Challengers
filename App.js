@@ -5,8 +5,8 @@ import Home from './src/pages/Home';
 import { useUserContext, UserContextProvider } from './src/context/UserContext';
 import SignUpSignInNavigator from './src/navigation/SignUpSignInNavigator';
 import { createStackNavigator } from '@react-navigation/stack';
-import auth from './src/firebase/auth';
-import { getUserData } from './src/firebase/api';
+import auth from './firebase/auth';
+import { getUserData } from './firebase/api';
 
 const Stack = createStackNavigator();
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import auth from '../firebase/auth';
-import db from '../firebase/database';
+import auth from '../../firebase/auth';
+import db from '../../firebase/database';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import UploadFileButton from '../components/UploadFileButton';

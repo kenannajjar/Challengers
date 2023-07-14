@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { signOut } from 'firebase/auth';
-import auth from '../firebase/auth';
+import auth from '../../firebase/auth';
 
 const LogoutButton = () => {
     const handleLogout = async () => {
