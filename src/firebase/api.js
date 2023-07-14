@@ -5,6 +5,7 @@ import { doc, getDoc, getDocs, collection, query, where, orderBy } from "firebas
 
 // Function to get all the data from a user
 export const getUserData = async (userID) => {
+    console.log("getUserData called");
     const userDocRef = doc(db, "users", userID); // Construct a reference to the document with the user ID
     const userDocSnapshot = await getDoc(userDocRef); // Retrieve the document snapshot
 
@@ -20,6 +21,7 @@ export const getUserData = async (userID) => {
 
 // Function to get all the live challenges from the challenges collection
 export const getUpcomingLiveChallenges = async () => {
+    console.log("getUpcomingLiveChallenges called");
 
     const challengesRef = collection(db, "challenges");
 
@@ -37,6 +39,7 @@ export const getUpcomingLiveChallenges = async () => {
 
 // Function to get all the non-live challenges from the challenges collection
 export const getUpcomingNonLiveChallenges = async () => {
+    console.log("getUpcomingNonLiveChallenges called");
 
     const challengesRef = collection(db, "challenges");
 

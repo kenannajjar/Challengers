@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native'
-import { getUserData } from '../firebase/api';
 import { useUserContext } from '../context/UserContext';
 
 export default function UserSummary() {
@@ -13,13 +12,20 @@ export default function UserSummary() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const userData = await getUserData(user.uid);
-            setUsername(userData.username);
-            setRibbits(userData.ribbits);
+            // set the username and ribbits from the user context
+            if (user && user.userData) {
+                setUsername(user.userData.username);
+                setRibbits(user.userData.ribbits);
+            }
         };
 
+        // add a tear down function
+        // return () => {
+        //     console.log("cleaning up");
+        // };
+
         fetchData();
-    }, []);
+    }, [user]);
 
 
     return (
@@ -46,7 +52,7 @@ const userInfo = {
     lastName: "Najjar",
     username: "kenannajjar",
     email: "kenannajjar@berkeley.edu",
-    profilePic: require("../../assets/kenan.jpg"),
+    profilePic: require("../../assets/frog.png"),
     credits: 100
 }
 const styles = StyleSheet.create({

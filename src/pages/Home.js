@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, View, StyleSheet, Text, ScrollView } from 'react-native';
+import { SafeAreaView, View, StyleSheet, Text, ScrollView, Platform } from 'react-native';
 import TodaysChallenge from '../components/TodaysChallenge';
 import UserSummary from '../components/UserSummary';
 import LogoutButton from '../components/LogoutButton';
@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         marginLeft: 10,
         marginRight: 10,
-        marginBottom: 10
+        marginBottom: 10,
+        paddingTop: Platform.OS === 'android' ? 40 : 0
     },
     todaysChallenge: {
         paddingTop: 20,
