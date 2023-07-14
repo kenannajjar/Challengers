@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginRight: 10, 
         marginBottom: 10,
-        paddingTop: Platform.OS === 'android' ? 20 : 0
+        paddingTop: Platform.OS === 'android' ? 40 : 0
     },
     todaysChallenge: {
         paddingTop: 20,

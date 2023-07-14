@@ -6,7 +6,7 @@ const CategoryButton = (props) => {
     const navigation = useNavigation();
 
     const goToCategory = function() {
-        navigation.navigate('CategoryPage'); // Navigate to the 'CategoryPage' screen
+        navigation.navigate('CategoryPage', {cat: props.cat}); // Navigate to the 'CategoryPage' screen
       };
 
     return (

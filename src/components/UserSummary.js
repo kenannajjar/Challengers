@@ -26,7 +26,7 @@ const userInfo = {
     lastName: "Najjar",
     username: "kenannajjar",
     email: "kenannajjar@berkeley.edu",
-    profilePic: require("../../assets/kenan.jpg"),
+    profilePic: require("../../assets/frog.png"),
     credits: 100
 }
 
