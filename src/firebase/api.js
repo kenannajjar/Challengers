@@ -1,5 +1,6 @@
 import db from "./database";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, getDocs, collection, query, where, orderBy } from "firebase/firestore";
+
 
 
 // Function to get all the data from a user
@@ -15,3 +16,37 @@ export const getUserData = async (userID) => {
     }
 
 }
+
+
+// Function to get all the live challenges from the challenges collection
+export const getUpcomingLiveChallenges = async () => {
+
+    const challengesRef = collection(db, "challenges");
+
+    const now = new Date();
+    const startTime = now.getTime();
+
+    // Create a query against the collection where the start time is greater than the current time AND "live" is true
+    const q = query(challengesRef, where("startTime", ">", startTime), where("live", "==", true), orderBy('startTime', 'asc'));
+
+    const challengesSnapshot = await getDocs(q);
+
+    return challengesSnapshot.docs.map(doc => doc.data());
+};
+
+
+// Function to get all the non-live challenges from the challenges collection
+export const getUpcomingNonLiveChallenges = async () => {
+
+    const challengesRef = collection(db, "challenges");
+
+    const now = new Date();
+    const startTime = now.getTime();
+
+    // Create a query against the collection where the start time is greater than the current time AND "live" is false
+    const q = query(challengesRef, where("startTime", ">", startTime), where("live", "==", false), orderBy('startTime', 'asc'));
+
+    const challengesSnapshot = await getDocs(q);
+
+    return challengesSnapshot.docs.map(doc => doc.data());
+};
