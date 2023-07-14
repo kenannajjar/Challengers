@@ -15,5 +15,23 @@ service cloud.firestore {
     match /{document=**} {
       allow read, write: if request.time < timestamp.date(2023, 9, 10);
     }
+
+    // write a rule that allows only users with the admin role to write, update, or delete to the "challenges", "questions", and "answers" collections
+    match /challenges/{challengeId} {
+      allow read: if true;
+      allow write, update, delete: if isSignedIn() && hasAnyRole(['admin']);
+    }
+
+    match /questions/{questionId} {
+      allow read: if true;
+      allow write, update, delete: if isSignedIn() && hasAnyRole(['admin']);
+    }
+
+    match /answers/{answerId} {
+      allow read: if true;
+      allow write, update, delete: if isSignedIn() && hasAnyRole(['admin']);
+    }
+
+    
   }
 }

@@ -36,7 +36,8 @@ const SignUpPage = () => {
                     email: email,
                     username: username,
                     dateCreated: serverTimestamp(),
-                    ribbits: 0
+                    ribbits: 0,
+                    roles: ["user"]
                 });
                 console.log("user added to database");
             }
