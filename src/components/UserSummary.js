@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Text, View, Image, StyleSheet } from 'react-native'
+import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import { getUserData } from '../firebase/api';
 import { useUserContext } from '../context/UserContext';
 
@@ -21,11 +21,20 @@ export default function UserSummary() {
 
 
     return (
-        <View style={styles.container}>
-            <View style={styles.imageContainer}>
-                <Image source={userInfo.profilePic} style={styles.image} />
+        <View style={styles.mainContainer}>
+            <View style={styles.innerContainer}>
+                <View style={styles.imageContainer}>
+                    <Image source={userInfo.profilePic} style={styles.image} />
+                </View>
+                <Text style={styles.username}> {userInfo.username} </Text>
             </View>
-            <Text style={styles.username}> {username} </Text>
+            <View style={styles.creditContainer}>
+                <Image source={require("../../assets/ribbit.png")} style={styles.creditImage} />
+                <Text style={styles.creditText}>{userInfo.credits}</Text>
+                <TouchableOpacity style={styles.addButton}>
+                    <Image source={require("../../assets/add.png")} style={styles.addButtonImage} />
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }
@@ -38,10 +47,22 @@ const userInfo = {
     profilePic: require("../../assets/kenan.jpg"),
     credits: 100
 }
-
 const styles = StyleSheet.create({
-    imageContainer:
-    {
+    mainContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        width: "100%",
+        backgroundColor: "#1e1e1e"
+    },
+
+    innerContainer: {
+        flexDirection: "row",
+        justifyContent: "flex-start",
+        alignItems: "center",
+    },
+
+    imageContainer: {
         borderRadius: 25,
         backgroundColor: "white",
         alignItems: "center",
@@ -54,22 +75,50 @@ const styles = StyleSheet.create({
         borderColor: "grey"
     },
 
-    image:
-    {
+    image: {
         width: 50,
         height: 50,
         resizeMode: "contain"
     },
 
-    username:
-    {
+    username: {
         color: "white",
         fontSize: 20,
         fontWeight: "bold"
     },
-    container: {
-        flexDirection: "row",
-        justifyContent: "flex-start",
+
+    creditContainer: {
+        borderRadius: 25,
+        borderWidth: 1,
+        borderColor: "white",
         alignItems: "center",
-    }
+        flexDirection: "row",
+        backgroundColor: "#242424",
+        height: 50
+    },
+
+    creditImage: {
+        height: 45,
+        width: 45,
+        marginRight: 15,
+        marginBottom: 3
+    },
+
+    creditText: {
+        color: "white",
+        marginRight: 2,
+        fontSize: 20,
+        fontWeight: "bold"
+    },
+
+    addButton: {
+        height: 36,
+        width: 36,
+        borderRadius: 18
+    },
+
+    addButtonImage: {
+        height: 36,
+        width: 36
+    },
 })

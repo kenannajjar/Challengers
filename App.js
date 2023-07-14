@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { View } from 'react-native';
+import CategoryPage from './src/pages/CategoryPage';
 import Home from './src/pages/Home';
 import { useUserContext, UserContextProvider } from './src/context/UserContext';
 import SignUpSignInNavigator from './src/navigation/SignUpSignInNavigator';
