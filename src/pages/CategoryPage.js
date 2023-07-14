@@ -2,8 +2,10 @@ import React from 'react'
 import { View, Image, SafeAreaView, Text, StyleSheet, ScrollView } from 'react-native'
 import { useRoute } from '@react-navigation/native'
 import UserSummary from '../components/UserSummary'
+import ChallengeButton from '../components/ChallengeButton';
 
 export default function CategoryPage() {
+
   const route = useRoute();
   const { cat } = route.params;
   return (
@@ -13,7 +15,9 @@ export default function CategoryPage() {
       </View>
       <Text style = {styles.text}>{cat.title}</Text>
       <ScrollView style = {styles.scrollView}>
-
+        {challenges.map((challenge, index) => (
+        <ChallengeButton challenge = {challenge} />
+        ))}
       </ScrollView>
     </SafeAreaView>
   )
@@ -50,3 +54,39 @@ scrollView: {
 
 
 })
+
+const challenges = [{
+  title: "Apex Legends Trivia",
+  difficulty: "Easy",
+  expiration: "5:00 PM",
+  cost: 200,
+  prize: 400,
+  color: "#3A4EFF"
+},
+{
+  title: "League of Legends Trivia",
+  difficulty: "Medium",
+  expiration: "5:00 PM",
+  cost: 200,
+  prize: 400,
+  color:  "#A59DFB"
+
+},
+{
+  title: "Call of Duty Trivia",
+  difficulty: "Hard",
+  expiration: "5:00 PM",
+  cost: 200,
+  prize: 400,
+  color: "#02497E"
+
+},
+{
+  title: "Nintendo Trivia",
+  difficulty: "Expert",
+  expiration: "5:00 PM",
+  cost: 200,
+  prize: 400,
+  color: "#640F0F"
+
+}]
