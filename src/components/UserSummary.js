@@ -6,6 +6,7 @@ import { useUserContext } from '../context/UserContext';
 export default function UserSummary() {
 
     const [username, setUsername] = useState('');
+    const [ribbits, setRibbits] = useState(0);
 
     // user context
     const { user } = useUserContext();
@@ -14,6 +15,7 @@ export default function UserSummary() {
         const fetchData = async () => {
             const userData = await getUserData(user.uid);
             setUsername(userData.username);
+            setRibbits(userData.ribbits);
         };
 
         fetchData();
@@ -26,11 +28,11 @@ export default function UserSummary() {
                 <View style={styles.imageContainer}>
                     <Image source={userInfo.profilePic} style={styles.image} />
                 </View>
-                <Text style={styles.username}> {userInfo.username} </Text>
+                <Text style={styles.username}> {username} </Text>
             </View>
             <View style={styles.creditContainer}>
                 <Image source={require("../../assets/ribbit.png")} style={styles.creditImage} />
-                <Text style={styles.creditText}>{userInfo.credits}</Text>
+                <Text style={styles.creditText}>{ribbits}</Text>
                 <TouchableOpacity style={styles.addButton}>
                     <Image source={require("../../assets/add.png")} style={styles.addButtonImage} />
                 </TouchableOpacity>

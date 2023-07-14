@@ -35,7 +35,8 @@ const SignUpPage = () => {
                 await setDoc(userRef, {
                     email: email,
                     username: username,
-                    dateCreated: serverTimestamp()
+                    dateCreated: serverTimestamp(),
+                    ribbits: 0
                 });
                 console.log("user added to database");
             }
