@@ -118,3 +118,4 @@ export const getAnswersByChallengeID = async (challengeID) => {
     return answersSnapshot.docs.map(doc => doc.data());
 }
 
+

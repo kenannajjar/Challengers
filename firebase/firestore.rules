@@ -32,6 +32,15 @@ service cloud.firestore {
       allow write, update, delete: if isSignedIn() && hasAnyRole(['admin']);
     }
 
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function hasAnyRole(roles) {
+      return isSignedIn() 
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(roles);
+    }
+
     
   }
 }
