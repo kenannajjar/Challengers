@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Image, SafeAreaView, Text, StyleSheet, ScrollView } from 'react-native'
 import { useRoute } from '@react-navigation/native'
 import UserSummary from '../components/UserSummary'
+import SoundPlayer from '../components/SoundPlayer'
 
 export default function CategoryPage() {
   const route = useRoute();
@@ -11,9 +12,11 @@ export default function CategoryPage() {
       <View style={styles.topBar}>
         <UserSummary />
       </View>
-      <Text style = {styles.text}>{cat.title}</Text>
-      <ScrollView style = {styles.scrollView}>
-
+      <Text style={styles.text}>{cat.title}</Text>
+      <ScrollView style={styles.scrollView}>
+        <View>
+          <SoundPlayer soundUri={'https://firebasestorage.googleapis.com/v0/b/challengers-83d7e.appspot.com/o/sounds%2Fedit.mp3?alt=media&token=6eb8302c-1b0f-4380-ab78-805db4a4cf7a'} />
+        </View>
       </ScrollView>
     </SafeAreaView>
   )
@@ -40,13 +43,13 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingLeft: 20,
     backgroundColor: "#121212"
-},
-scrollView: {
-  flex: 1,
-  backgroundColor: "#121212",
-  paddingLeft: 20,
-  paddingRight: 20
-}
+  },
+  scrollView: {
+    flex: 1,
+    backgroundColor: "#121212",
+    paddingLeft: 20,
+    paddingRight: 20
+  }
 
 
 })
