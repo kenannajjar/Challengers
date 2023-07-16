@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Image, SafeAreaView, Text, StyleSheet, ScrollView } from 'react-native'
+import { View, SafeAreaView, Text, StyleSheet, ScrollView } from 'react-native'
 import { useRoute } from '@react-navigation/native'
 import UserSummary from '../components/UserSummary'
 import SoundPlayer from '../components/SoundPlayer'

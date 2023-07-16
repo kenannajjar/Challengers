@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import { createChallenge } from '../../firebase/api';
 
 const TriviaCreationPage = () => {
     const [challengeName, setChallengeName] = useState('');
@@ -67,6 +68,22 @@ const TriviaCreationPage = () => {
         console.log('Is Live Event:', isLiveEvent);
         console.log('Start Time:', startTime);
         console.log('End Time:', endTime);
+
+        // Group together challenge, categories, number of questions, isLiveEvent, start time, and end time
+        const challengeData = {
+            challengeName,
+            categories,
+            numQuestions,
+            isLiveEvent,
+            startTime,
+            endTime,
+        };
+
+
+        createChallenge(
+            challengeData,
+            questions,
+        );
     };
 
     const renderCategories = () => {

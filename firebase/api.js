@@ -102,7 +102,7 @@ export const getQuestionsByChallengeID = async (challengeID) => {
     const questionsSnapshot = await getDoc(q);
 
     return questionsSnapshot.docs.map(doc => doc.data());
-}
+};
 
 // Function to get all the answers from the answers collection for a given challenge ID
 export const getAnswersByChallengeID = async (challengeID) => {
@@ -116,6 +116,6 @@ export const getAnswersByChallengeID = async (challengeID) => {
     const answersSnapshot = await getDoc(q);
 
     return answersSnapshot.docs.map(doc => doc.data());
-}
+};
 
 
