@@ -1,7 +1,11 @@
 import React from 'react'
 import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native'
+import { useNavigation } from '@react-navigation/native';
 
 export default function UserSummary() {
+
+    const navigation = useNavigation();
+
     return (
         <View style={styles.mainContainer}>
             <View style={styles.innerContainer}>
@@ -13,7 +17,7 @@ export default function UserSummary() {
             <View style={styles.creditContainer}>
                 <Image source= {require("../../assets/ribbit.png")} style = {styles.creditImage} />
                 <Text style={styles.creditText}>{userInfo.credits}</Text>
-                <TouchableOpacity style = {styles.addButton}>
+                <TouchableOpacity style = {styles.addButton} onPress={() => navigation.navigate('BuyBitsModal')}>
                     <Image source= {require("../../assets/add.png")} style = {styles.addButtonImage}/>
                 </TouchableOpacity>
             </View>
