@@ -4,6 +4,7 @@ import { useRoute } from '@react-navigation/native'
 import UserSummary from '../components/UserSummary'
 import SoundPlayer from '../components/SoundPlayer'
 import TriviaCreationPage from '../components/TriviaCreationPage'
+import TriviaListing from '../components/TriviaListing'
 
 export default function CategoryPage() {
   const route = useRoute();
@@ -18,7 +19,10 @@ export default function CategoryPage() {
         <View>
           <SoundPlayer soundUri={'https://firebasestorage.googleapis.com/v0/b/challengers-83d7e.appspot.com/o/sounds%2Fedit.mp3?alt=media&token=6eb8302c-1b0f-4380-ab78-805db4a4cf7a'} />
         </View>
-        <TriviaCreationPage />
+        <TriviaListing
+          pictureLeft={require('../../assets/currency.png')}
+          pictureRight={require('../../assets/currency.png')}
+          titleLeft="Trivia 1" />
       </ScrollView>
     </SafeAreaView>
   )
