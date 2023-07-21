@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
 
 const Trivia4MultipleChoice = () => {
     const [selectedAnswer, setSelectedAnswer] = useState(null);
+    const [timerStart, setTimerStart] = React.useState(true)
 
     const question = 'What is the capital of France?';
     const correctAnswer = 3;
@@ -29,6 +31,16 @@ const Trivia4MultipleChoice = () => {
 
     return (
         <View style={styles.container}>
+            <CountdownCircleTimer
+                isPlaying={timerStart}
+                duration={10}
+                colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+                colorsTime={[10, 6, 3, 0]}
+                onComplete={() => ({ shouldRepeat: false, delay: 2 })}
+                updateInterval={0}
+            >
+                {({ remainingTime }) => <Text>{remainingTime}</Text>}
+            </CountdownCircleTimer>
             <View style={styles.questionContainer}>
                 <Text style={styles.questionText}>{question}</Text>
             </View>

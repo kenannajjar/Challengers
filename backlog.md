@@ -1,0 +1,9 @@
+- Check for same username. If so, tell user to choose another username.
+- Check for same email. If so, tell user to choose another email.
+- Add a next question button to the Trivia Question Page.
+- Add a global timer to keep count of the total time it takes to do the Trivia.
+- Add a popup screen for when you click a challenge listing, such that it makes sure the user wants to do the challenge.
+- For the backend:
+    - Make all questions and answers separate documents. I have decided.
+    - Change the admin interface.
+- 

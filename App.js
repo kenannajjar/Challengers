@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import CategoryPage from './src/pages/CategoryPage';
 import Home from './src/pages/Home';
@@ -13,6 +14,7 @@ const Stack = createStackNavigator();
 
 const App = () => {
   const { user, setUser } = useUserContext(); // Access user state from the context
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (u) => {
@@ -22,12 +24,21 @@ const App = () => {
         const userData = await getUserData(u.uid);
         setUser({ ...user, userData });
       }
+
+      setLoading(false);
     });
 
     return () => unsubscribe();
   }, []);
 
-  if (user) {
+  if (loading) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <<Text>Loading...</Text>>
+      </View>
+    );
+  }
+  else if (user) {
     return (
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
