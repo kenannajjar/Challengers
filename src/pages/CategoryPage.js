@@ -1,14 +1,36 @@
 import React from 'react'
-import { View, SafeAreaView, Text, StyleSheet, ScrollView } from 'react-native'
+import { View, SafeAreaView, Text, StyleSheet, ScrollView, Touchable } from 'react-native'
 import { useRoute } from '@react-navigation/native'
 import UserSummary from '../components/UserSummary'
 import SoundPlayer from '../components/SoundPlayer'
-import TriviaCreationPage from '../components/TriviaCreationPage'
 import TriviaListing from '../components/TriviaListing'
+import { TouchableOpacity } from 'react-native'
+import { useNavigation } from '@react-navigation/native';
 
 export default function CategoryPage() {
+
   const route = useRoute();
   const { cat } = route.params;
+  const navigation = useNavigation();
+
+  const renderTriviaListings = () => {
+
+    for (let i = 0; i < 1; i++) {
+      return (
+        <TouchableOpacity onPress={() => navigation.navigate('Trivia4MultipleChoice')}>
+          <TriviaListing
+            pictureLeft={require('../../assets/currency.png')}
+            titleLeft="Trivia 1"
+            difficultyLevel={1}
+            prize={200}
+            entry={100}
+            timeOfEvent={new Date().getTime() + 10000}
+          />
+        </TouchableOpacity>
+      )
+    }
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.topBar}>
@@ -19,14 +41,7 @@ export default function CategoryPage() {
         <View>
           <SoundPlayer soundUri={'https://firebasestorage.googleapis.com/v0/b/challengers-83d7e.appspot.com/o/sounds%2Fedit.mp3?alt=media&token=6eb8302c-1b0f-4380-ab78-805db4a4cf7a'} />
         </View>
-        <TriviaListing
-          pictureLeft={require('../../assets/currency.png')}
-          titleLeft="Trivia 1"
-          difficultyLevel={1}
-          prize={200}
-          entry={100}
-          timeOfEvent={new Date().getTime() + 1000000}
-        />
+        {renderTriviaListings()}
       </ScrollView>
     </SafeAreaView>
   )

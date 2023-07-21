@@ -69,7 +69,6 @@ const TriviaListing = ({ pictureLeft, titleLeft, prize, entry, difficultyLevel, 
                     </View>
                 </View>
             </View>
-            <View className="bg-slate-500 w-full h-40 rounded-lg shadow-lg mt-4"></View>
         </View>
 
 

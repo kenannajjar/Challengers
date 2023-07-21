@@ -7,6 +7,7 @@ import SignUpSignInNavigator from './src/navigation/SignUpSignInNavigator';
 import { createStackNavigator } from '@react-navigation/stack';
 import auth from './firebase/auth';
 import { getUserData } from './firebase/api';
+import Trivia4MultipleChoice from './src/pages/Trivia4MultipleChoice';
 
 const Stack = createStackNavigator();
 
@@ -32,6 +33,7 @@ const App = () => {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="CategoryPage" component={CategoryPage} />
+          <Stack.Screen name="Trivia4MultipleChoice" component={Trivia4MultipleChoice} />
         </Stack.Navigator>
       </NavigationContainer>
     );
