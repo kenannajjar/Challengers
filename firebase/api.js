@@ -1,6 +1,6 @@
 import db from "./database";
 import { doc, getDoc, getDocs, collection, query, where, orderBy } from "firebase/firestore";
-
+import { Timestamp } from "firebase/firestore";
 
 
 // Function to get all the data from a user
@@ -119,3 +119,9 @@ export const getAnswersByChallengeID = async (challengeID) => {
 };
 
 
+// Function to get the current time from the server using Timestamp from firebase
+export const getServerTime = async () => {
+    return Timestamp.now().seconds;
+}
+
+// Function to get the 

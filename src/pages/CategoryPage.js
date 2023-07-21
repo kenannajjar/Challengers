@@ -21,8 +21,12 @@ export default function CategoryPage() {
         </View>
         <TriviaListing
           pictureLeft={require('../../assets/currency.png')}
-          pictureRight={require('../../assets/currency.png')}
-          titleLeft="Trivia 1" />
+          titleLeft="Trivia 1"
+          difficultyLevel={1}
+          prize={200}
+          entry={100}
+          timeOfEvent={new Date().getTime() + 1000000}
+        />
       </ScrollView>
     </SafeAreaView>
   )
