@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, SafeAreaView, Text, StyleSheet, ScrollView, Touchable } from 'react-native'
 import { useRoute } from '@react-navigation/native'
 import UserSummary from '../components/UserSummary'
@@ -6,18 +6,27 @@ import SoundPlayer from '../components/SoundPlayer'
 import TriviaListing from '../components/TriviaListing'
 import { TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
+import Modal from "react-native-modal";
+import ConfirmationPopUp from '../components/ConfirmationPopUp'
 
 export default function CategoryPage() {
 
   const route = useRoute();
   const { cat } = route.params;
   const navigation = useNavigation();
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedTriviaData, setSelectedTriviaData] = useState(null);
+
 
   const renderTriviaListings = () => {
 
     for (let i = 0; i < 1; i++) {
       return (
-        <TouchableOpacity onPress={() => navigation.navigate('Trivia4MultipleChoice')}>
+        <TouchableOpacity onPress={() => {
+          setSelectedTriviaData({ title: "Trivia 1", difficultyLevel: 1, prize: 200, entry: 100, timeOfEvent: new Date().getTime() + 10000 });
+          setModalVisible(!modalVisible);
+          // navigation.navigate('Trivia4MultipleChoice');
+        }}>
           <TriviaListing
             pictureLeft={require('../../assets/currency.png')}
             titleLeft="Trivia 1"
@@ -33,6 +42,19 @@ export default function CategoryPage() {
 
   return (
     <SafeAreaView style={styles.container}>
+      {/* Confirmation Pop-Up */}
+      <Modal
+        isVisible={modalVisible}
+        animationIn={'fadeIn'}
+        animationOut={'fadeOut'}
+        coverScreen={true}
+        onBackdropPress={() => setModalVisible(false)}
+        useNativeDriverForBackdrop={true}
+      >
+        <ConfirmationPopUp triviaData={selectedTriviaData} />
+      </Modal>
+
+
       <View style={styles.topBar}>
         <UserSummary />
       </View>
