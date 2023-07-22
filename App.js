@@ -9,7 +9,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import auth from './firebase/auth';
 import { getUserData } from './firebase/api';
 import Trivia4MultipleChoice from './src/pages/Trivia4MultipleChoice';
+import * as SplashScreen from 'expo-splash-screen';
 
+SplashScreen.preventAutoHideAsync();
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -32,13 +34,10 @@ const App = () => {
   }, []);
 
   if (loading) {
-    return (
-      <View className="flex-1 justify-center align-middle bg-black">
-        <ActivityIndicator size="large" color="#00ff00" />
-      </View>
-    );
+    SplashScreen.preventAutoHideAsync();
   }
   else if (user) {
+    SplashScreen.hideAsync();
     return (
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -49,6 +48,7 @@ const App = () => {
       </NavigationContainer>
     );
   } else {
+    SplashScreen.hideAsync();
     return (
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
