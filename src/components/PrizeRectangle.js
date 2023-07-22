@@ -1,4 +1,5 @@
-import { Text, View, Image } from 'react-native';
+import { Text, View } from 'react-native';
+import { Image } from 'expo-image';
 
 const PrizeRectangle = ({ prize }) => {
     return (
