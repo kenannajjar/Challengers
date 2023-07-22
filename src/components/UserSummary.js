@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
+import { Image } from 'expo-image';
 import { useUserContext } from '../context/UserContext';
 
 export default function UserSummary() {
