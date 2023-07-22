@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
+import { ActivityIndicator, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import CategoryPage from './src/pages/CategoryPage';
 import Home from './src/pages/Home';
@@ -33,8 +33,8 @@ const App = () => {
 
   if (loading) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <<Text>Loading...</Text>>
+      <View className="flex-1 justify-center align-middle bg-black">
+        <ActivityIndicator size="large" color="#00ff00" />
       </View>
     );
   }
