@@ -30,7 +30,10 @@ export default function ConfirmationPopUp({ triviaData, hideModal }) {
 
             {/* Purchase / Cancel Buttons */}
             <View className="mt-auto flex flex-row">
-                <TouchableOpacity className="flex-1 border h-14 border-stone-950 border-solid bg-green-500">
+                <TouchableOpacity className="flex-1 border h-14 border-stone-950 border-solid bg-green-500" onPress={
+                    () => {
+                        hideModal();
+                    }}>
                     <Text className="m-auto text-xl">Cancel</Text>
                 </TouchableOpacity>
                 <TouchableOpacity className="flex-1 border border-stone-950 border-solid bg-green-500" onPress={
