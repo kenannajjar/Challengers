@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import CategoryPage from './src/pages/CategoryPage';
-import Home from './src/pages/Home';
 import { useUserContext, UserContextProvider } from './src/context/UserContext';
 import SignUpSignInNavigator from './src/navigation/SignUpSignInNavigator';
-import { createStackNavigator } from '@react-navigation/stack';
+import HomeNavigator from './src/navigation/HomeNavigator';
 import auth from './firebase/auth';
 import { getUserData } from './firebase/api';
-import Trivia4MultipleChoice from './src/pages/Trivia4MultipleChoice';
 import * as SplashScreen from 'expo-splash-screen';
 
+
 SplashScreen.preventAutoHideAsync();
-const Stack = createStackNavigator();
 
 const App = () => {
   const { user, setUser } = useUserContext(); // Access user state from the context
@@ -38,22 +35,12 @@ const App = () => {
   else if (user) {
     SplashScreen.hideAsync();
     return (
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="CategoryPage" component={CategoryPage} />
-          <Stack.Screen name="Trivia4MultipleChoice" component={Trivia4MultipleChoice} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <HomeNavigator />
     );
   } else {
     SplashScreen.hideAsync();
     return (
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="SignUpSignIn" component={SignUpSignInNavigator} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <SignUpSignInNavigator />
     );
   }
 };
@@ -61,7 +48,9 @@ const App = () => {
 const AppWithContext = () => {
   return (
     <UserContextProvider>
-      <App />
+      <NavigationContainer>
+        <App />
+      </NavigationContainer>
     </UserContextProvider>
   );
 };

@@ -5,7 +5,6 @@ import UserSummary from '../components/UserSummary'
 import SoundPlayer from '../components/SoundPlayer'
 import TriviaListing from '../components/TriviaListing'
 import { TouchableOpacity } from 'react-native'
-import { useNavigation } from '@react-navigation/native';
 import Modal from "react-native-modal";
 import ConfirmationPopUp from '../components/ConfirmationPopUp'
 
@@ -13,7 +12,6 @@ export default function CategoryPage() {
 
   const route = useRoute();
   const { cat } = route.params;
-  const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedTriviaData, setSelectedTriviaData] = useState(null);
 
@@ -25,7 +23,6 @@ export default function CategoryPage() {
         <TouchableOpacity onPress={() => {
           setSelectedTriviaData({ title: "Trivia 1", difficultyLevel: 1, prize: 200, entry: 100, timeOfEvent: new Date().getTime() + 10000 });
           setModalVisible(!modalVisible);
-          // navigation.navigate('Trivia4MultipleChoice');
         }}>
           <TriviaListing
             pictureLeft={require('../../assets/currency.png')}
@@ -51,7 +48,7 @@ export default function CategoryPage() {
         onBackdropPress={() => setModalVisible(false)}
         useNativeDriverForBackdrop={true}
       >
-        <ConfirmationPopUp triviaData={selectedTriviaData} />
+        <ConfirmationPopUp triviaData={selectedTriviaData} hideModal={() => setModalVisible(false)} />
       </Modal>
 
 

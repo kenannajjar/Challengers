@@ -4,11 +4,9 @@ import { useNavigation } from '@react-navigation/native';
 
 
 
-export default function ConfirmationPopUp({ triviaData }) {
+export default function ConfirmationPopUp({ triviaData, hideModal }) {
 
     const navigation = useNavigation();
-
-
 
 
     return (
@@ -35,11 +33,16 @@ export default function ConfirmationPopUp({ triviaData }) {
                 <TouchableOpacity className="flex-1 border h-14 border-stone-950 border-solid bg-green-500">
                     <Text className="m-auto text-xl">Cancel</Text>
                 </TouchableOpacity>
-                <TouchableOpacity className="flex-1 border border-stone-950 border-solid bg-green-500">
+                <TouchableOpacity className="flex-1 border border-stone-950 border-solid bg-green-500" onPress={
+                    () => {
+                        hideModal();
+                        navigation.navigate('TriviaQuestionNavigator', { screen: "Trivia4MultipleChoice" })
+                    }
+                }>
                     <Text className="m-auto text-xl font-bold">Let's Play!</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+        </View >
 
     );
 }
